@@ -1,0 +1,32 @@
+{
+  "name": "module-12-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests",
+    "src": "src"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aesthetic-Justice/Module-10-Challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aesthetic-Justice/Module-10-Challenge/issues"
+  },
+  "homepage": "https://github.com/Aesthetic-Justice/Module-10-Challenge#readme",
+  "description": "",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "node-fetch": "^2.6.7"
+  }
+}
