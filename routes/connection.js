@@ -282,7 +282,7 @@ class QueryManager {
                         this.inquiererGetQuestion(result.taskChoice);
                         break;
                     case 'quit':
-                        break;
+                        process.exit(0);
                     default:
                         console.log(`Error 404: qAllOptions failed to find result`)
                         break;
