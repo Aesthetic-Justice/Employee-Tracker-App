@@ -208,7 +208,7 @@ class QueryManager {
     }
 
     addRole(title, salary, department_id) {
-        fetch(`http://localhost:${this.PORT}/api/department`, {
+        fetch(`http://localhost:${this.PORT}/api/role`, {
             method: `POST`,
             body: JSON.stringify({ title, salary, department_id }),
             headers: { 'Content-Type': 'application/json' }
@@ -220,10 +220,10 @@ class QueryManager {
             })
     }
 
-    addEmployee(first_name,last_name,role_id,manager_id) {
+    addEmployee(first_name, last_name, role_id, manager_id) {
         fetch(`http://localhost:${this.PORT}/api/employee`, {
             method: `POST`,
-            body: JSON.stringify({ first_name,last_name,role_id,manager_id }),
+            body: JSON.stringify({ first_name, last_name, role_id, manager_id }),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
@@ -233,7 +233,7 @@ class QueryManager {
             })
     }
 
-    updateEmployee(employee_id,role_id) {
+    updateEmployee(employee_id, role_id) {
         fetch(`http://localhost:${this.PORT}/api/employee/${employee_id}`, {
             method: `PUT`,
             body: JSON.stringify({ role_id }),
@@ -355,7 +355,7 @@ class QueryManager {
                             this.inquiererAnswerQuestion(question, prompt)
                         });
                 });
-                break; 
+                break;
             default:
                 console.log(`Error 404: Question prompt not found`)
                 break;
@@ -374,16 +374,16 @@ class QueryManager {
                         }, 500);
                         break;
                     case `add a role`:
-                        result.department_id = JSON.stringify(question[2].choices.indexOf(result.department_id) + 1)
-                        this.addRole(result.title,result.salary.result.department_id);
+                        result.department_id = JSON.stringify(question[2].choices.indexOf(result.department_id)+1)
+                        this.addRole(result.title, result.salary, result.department_id);
                         setTimeout(() => {
                             this.inquiererMain();
                         }, 500);
                         break;
                     case `add an employee`:
                         result.role_id = JSON.stringify(question[2].choices.indexOf(result.role_id) + 1);
-                        result.manager_id !== '' ? result.manager_id = JSON.stringify(question[3].choices.indexOf(result.manager_id) + 1) : result.manager_id=NULL;
-                        this.addEmployee(result.first_name,result.last_name,result.role_id,result.manager_id);
+                        result.manager_id !== '' ? result.manager_id = JSON.stringify(question[3].choices.indexOf(result.manager_id) + 1) : result.manager_id = NULL;
+                        this.addEmployee(result.first_name, result.last_name, result.role_id, result.manager_id);
                         setTimeout(() => {
                             this.inquiererMain();
                         }, 500);
@@ -391,7 +391,7 @@ class QueryManager {
                     case `update an employee role`:
                         result.employee_id = JSON.stringify(question[0].choices.indexOf(result.employee_id) + 1);
                         result.role_id = JSON.stringify(question[1].choices.indexOf(result.role_id) + 1);
-                        this.updateEmployee(result.employee_id,result.role_id);
+                        this.updateEmployee(result.employee_id, result.role_id);
                         setTimeout(() => {
                             this.inquiererMain();
                         }, 500);
